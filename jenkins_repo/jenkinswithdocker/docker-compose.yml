@@ -1,13 +1,14 @@
 services:
   jenkins:
-    build: jenkins/jenkins:2.60.3-alpine
-    container_name: jenkins_box_lts1
+    build: .
+    container_name: jenkins_box_lts
     user: root
     ports:
-      - "8081:8081"
-      - "50001:50001"
+      - "8080:8080"
+      - "50000:50000"
     volumes:
       - /local/jenkins:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      #- /local/certs:/usr/local/share/ca-certificates
+      - /local/certs:/usr/local/share/ca-certificates
       #local storage path : docker jenkins storage path
+    #restart: restart
